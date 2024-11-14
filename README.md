@@ -23,6 +23,13 @@ php artisan migrate
 php artisan db:seed
 ```
 
+###### Start App
+
+```bash
+php artisan serve
+php artisan queue:work
+```
+
 
 # Zimou Technical test
 
