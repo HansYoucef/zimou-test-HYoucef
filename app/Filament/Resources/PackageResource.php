@@ -44,10 +44,12 @@ class PackageResource extends Resource
                                 ->label('UUID')
                                 ->disabled()
                                 ->required()
+                                ->hiddenOn('create')
                                 ->maxLength(36),
                             Forms\Components\TextInput::make('tracking_code')
                                 ->required()
                                 ->disabled()
+                                ->hiddenOn('create')
                                 ->maxLength(255),
                             Forms\Components\Select::make('commune_id')
                                 ->relationship('commune', 'name')
@@ -101,7 +103,8 @@ class PackageResource extends Resource
                             Forms\Components\TextInput::make('delivery_price')
                                 ->required()
                                 ->prefix('$')
-                                ->numeric(),
+                                ->numeric()
+                                ->default(0),
                             Forms\Components\TextInput::make('extra_weight_price')
                                 ->required()
                                 ->numeric()
@@ -130,11 +133,13 @@ class PackageResource extends Resource
                             Forms\Components\TextInput::make('price')
                                 ->required()
                                 ->numeric()
-                                ->prefix('$'),
+                                ->prefix('$')
+                                ->default(0),
                             Forms\Components\TextInput::make('price_to_pay')
                                 ->required()
                                 ->numeric()
-                                ->prefix('$'),
+                                ->prefix('$')
+                                ->default(0),
                             Forms\Components\TextInput::make('return_price')
                                 ->required()
                                 ->numeric()
@@ -143,7 +148,8 @@ class PackageResource extends Resource
                             Forms\Components\TextInput::make('total_price')
                                 ->required()
                                 ->numeric()
-                                ->prefix('$'),
+                                ->prefix('$')
+                                ->default(0),
                             Forms\Components\DateTimePicker::make('status_updated_at'),
                             Forms\Components\DateTimePicker::make('delivered_at'),
                         ]),
