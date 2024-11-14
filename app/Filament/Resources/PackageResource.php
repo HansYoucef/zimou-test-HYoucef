@@ -12,6 +12,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\FontFamily;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -331,7 +332,18 @@ class PackageResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                
+                SelectFilter::make('Status')
+                    ->relationship('status', 'name')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('Delivery Type')
+                    ->relationship('deliveryType', 'name')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('Wilaya')
+                    ->relationship('commune.wilaya', 'name')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
